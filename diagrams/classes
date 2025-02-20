@@ -1,0 +1,161 @@
+@startuml
+
+
+class Question {
+    - text: str
+    - answers: List[str]
+    - correct_answer: int
+    + __init__(text: str, answers: List[str], correct_answer: int)
+    + check_answer(user_answer: int) : bool
+    + __str__() : str
+}
+
+class Exam {
+    - name: str
+    - subject: str
+    - questions: List[Question]
+    + __init__(name: str, subject: str)
+    + add_question(question: Question)
+    + conduct_exam(student: Student) : ExamResult
+    + __str__() : str
+}
+
+class ExamResult {
+    - exam: Exam
+    - student: Student
+    - answers: Dict[int, int]
+    - score: int
+    + __init__(exam: Exam, student: Student)
+    + submit_answer(question_num: int, answer: int)
+    + calculate_score()
+    + __str__() : str
+}
+
+class Book {
+    - book_id: int
+    - title: str
+    - author: str
+    + __init__(book_id: int, title: str, author: str)
+    + __str__() : str
+}
+
+class Library {
+    - books: List[Book]
+    + __init__()
+    + add_book(book: Book)
+    + borrow_book(book_id: int) : Book
+    + find_book(book_id: int) : Book
+    + __str__() : str
+}
+
+class Student {
+    - student_id: int
+    - name: str
+    - birth_date: str
+    - is_budget: bool
+    - scholarship: float
+    - average_grade: float
+    - _group: Group
+    - borrowed_books: List[Book]
+    + __init__(student_id: int, name: str, birth_date: str, is_budget: bool, average_grade: float)
+    + group : Group
+    + group.setter(value: Group)
+    + update_average_grade(new_grade: float)
+    + take_exam(exam: Exam) : ExamResult
+    + choose_exam(department: Department) : Exam
+    + borrow_book_from_library(library: Library, book_id: int)
+    + return_book_to_library(library: Library, book_id: int)
+    + __str__() : str
+}
+
+
+class Teacher {
+    - teacher_id: int
+    - name: str
+    - age: int
+    - subject: str
+    + __init__(teacher_id: int, name: str, age: int, subject: str)
+    + create_exam(exam_name: str) : Exam
+    + add_question_to_exam(exam: Exam, text: str, answers: List[str], correct_answers: List[int])
+    + __str__() : str
+}
+
+class DepartmentHead {
+    - teacher_id: int
+    - name: str
+    - age: int
+    - subject: str
+    - department: Department
+    + __init__(teacher_id: int, name: str, age: int, subject: str)
+    + assign_scholarships(department: Department)
+    + hire_teacher(teacher: Teacher, department: Department)
+    + fire_teacher(teacher: Teacher, department: Department)
+    + create_curriculum(department: Department, curriculum_data: dict)
+    + set_curator_for_group(group: Group, teacher: Teacher)
+    + add_group_to_department(department: Department, group: Group)
+    + set_department(department: Department)
+}
+
+class Group {
+    - group_id: int
+    - students: List[Student]
+    - department: Department
+    - curator: Teacher
+    + __init__(group_id: int)
+    + set_department(department: Department)
+    + add_student(student: Student)
+    + remove_student(student: Student)
+    + set_curator(curator: Teacher)
+    + __str__() : str
+}
+
+class Department {
+    - name: str
+    - groups: List[Group]
+    - teachers: List[Teacher]
+    - head: DepartmentHead
+    - exams: List[Exam]
+    - curriculum: dict
+    + __init__(name: str)
+    + add_exam(exam: Exam)
+    + get_exam(exam_name: str) : Exam
+    + add_group(group: Group)
+    + set_head(head: DepartmentHead)
+    + add_teacher(teacher: Teacher)
+    + view_department_info()
+}
+
+class Faculty {
+    - name: str
+    - departments: List[Department]
+    + __init__(name: str)
+    + __str__() : str
+}
+
+class University {
+    - name: str
+    - faculties: List[Faculty]
+    - library: Library
+    - departments: List[Department]
+    + __init__(name: str)
+    + __str__() : str
+    + add_department(department_name: str)
+}
+
+Exam --> Question : состоит из
+Student --> Group : принадлежит
+Book --> Library : принадлежит
+Student --> Library : использует
+ExamResult --> Exam : связан с
+ExamResult --> Student : оценивает
+Teacher --> Department : работает в
+Department --> Teacher : имеет преподавателей
+Department --> Exam : содержит экзамены
+DepartmentHead --> Department : управляет
+Group --> Department : принадлежит
+Faculty --> Department : включает
+Faculty --> Teacher : имеет преподавателей
+University --> Faculty : имеет факультеты
+University --> Department : имеет кафедры
+
+@enduml
