@@ -32,12 +32,12 @@ python -m main
 
 ### 🖼️ UML Diagrams
 
-### Class Diagram#
-![State Diagram](university-system/diagrams/classes.png)
+### Class Diagram
+![Classes Diagram](/diagrams/classes.png)
 
 
-### Class Diagram#
-![State Diagram](university-system/diagrams/classes.png)
+### Class Diagram
+![State Diagram](/diagrams/state.png)
 
 
 
