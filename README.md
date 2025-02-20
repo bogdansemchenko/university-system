@@ -31,12 +31,13 @@ python -m main
 
 
 ## 🖼️ UML Diagrams
-### Class Diagram
-![Class Diagram](![image](https://github.com/user-attachments/assets/ed087e5c-2a22-43e7-a70c-e3590d1c7740)
-)
 
-### States Diagram
-![State Diagram](![image](https://github.com/user-attachments/assets/66bb3b13-1ae4-4503-9d96-3394fac4268c)
-)
+### Class Diagram#
+![State Diagram](university-system/diagrams/classes)
+
+
+### Class Diagram#
+![State Diagram](university-system/diagrams/classes)
+
 
 
