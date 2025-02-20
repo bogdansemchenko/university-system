@@ -30,14 +30,14 @@ python -m main
 ```
 
 
-## 🖼️ UML Diagrams
+### 🖼️ UML Diagrams
 
 ### Class Diagram#
-![State Diagram](university-system/diagrams/classes)
+![State Diagram](university-system/diagrams/classes.png)
 
 
 ### Class Diagram#
-![State Diagram](university-system/diagrams/classes)
+![State Diagram](university-system/diagrams/classes.png)
 
 
 
