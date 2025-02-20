@@ -41,3 +41,31 @@ python -m main
 
 
 
+# ✅ Testing
+```sh
+python -m unittest discover -s tests
+```
+## 📊 Test Coverage  
+
+To check test coverage, use `coverage.py`:  
+
+1. **Install `coverage` (if not installed):**  
+   ```sh
+   pip install coverage
+   ```
+
+2. **Run tests with coverage tracking:**  
+   ```sh
+   coverage run -m unittest discover -s tests
+   ```
+
+3. **Display the coverage report in the terminal:**  
+   ```sh
+   coverage report -m
+   ```
+
+4. **Generate an HTML report:**  
+   ```sh
+   coverage html
+   ```
+   Open `htmlcov/index.html` in a browser to view a detailed report.
